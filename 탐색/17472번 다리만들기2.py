@@ -34,8 +34,7 @@ def distancecheck(x,y):#가로 세로로 탐색
       break
     if island[i][y] != 0 and island[i][y] != island[x][y]:#0이 아니고 자기 자신의 숫자가 아니라면
       if cnt <= 1:
-        continue
-      print(i,y,cnt)
+        break      
       distance.append((island[x][y],island[i][y],cnt))
       break
       
@@ -47,7 +46,7 @@ def distancecheck(x,y):#가로 세로로 탐색
       break
     if island[x][i]!=0 and island[x][i] != island[x][y]: 
       if cnt2 <= 1:
-        continue        
+        break        
       distance.append((island[x][y],island[x][i],cnt2))
       break 
 
@@ -77,8 +76,7 @@ for start,end,cost in distance:
       union(parent,start,end)
       result += cost
 ck = len(set(map(lambda x : find_parent(parent,x),parent)))
-print(distance)
-print(island)
+
 if ck == 2:
   print(result)
 else:
